@@ -345,6 +345,30 @@
       event.target.classList.add('active');
       document.getElementById('grade-' + grade).style.display = 'block';
     }
+        // Exclude Samantha Everidge's Freshman Year (Leadership Prep)
+    document.addEventListener("DOMContentLoaded", () => {
+      // 1. Deduct 105 freshman kills from Career Kills (1,055+ -> 950+) and adjust year span
+      document.querySelectorAll("#view-career .leader-row").forEach(row => {
+        const nameEl = row.querySelector(".player-name");
+        if (nameEl && nameEl.textContent.includes("Samantha Everidge")) {
+          const subEl = row.querySelector(".player-sub");
+          if (subEl && subEl.textContent.includes("2023–2027")) {
+            subEl.textContent = "2024–2027";
+            const statEl = row.querySelector(".stat-val");
+            if (statEl) statEl.textContent = "950+";
+          }
+        }
+      });
+
+      // 2. Remove Samantha Everidge from the Freshman Kills leaderboard
+      document.querySelectorAll("#grade-fr .leader-row").forEach(row => {
+        const nameEl = row.querySelector(".player-name");
+        if (nameEl && nameEl.textContent.includes("Samantha Everidge")) {
+          row.remove();
+        }
+      });
+    });
+
   </script>
 </body>
 </html>
