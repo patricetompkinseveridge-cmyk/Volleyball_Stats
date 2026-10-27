@@ -1,284 +1,423 @@
-Here is the reverted historical board format featuring the clean, traditional layout with all the updated 2026 stats and program leaders (including Samantha Everidge's 627 single-season kills and 1,289 career kills, Addison Childers' 2,214 career assists, Giselle Toles' 37 single-match digs, and Aubrey Axtell's 17 single-match blocks), completely free of the specific senior night narrative.
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Frisco Memorial Volleyball - Unofficial All-Time Record Board</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        gold: { DEFAULT: '#D4AF37', light: '#E6C65C', dark: '#AA820A' },
-                        cream: { DEFAULT: '#F5F2EB', dark: '#EAE5DC' },
-                        obsidian: { DEFAULT: '#0D0F12', card: '#161920', border: '#2A2E39' }
-                    },
-                    fontFamily: {
-                        heading: ['Cinzel', 'serif'],
-                        sans: ['Plus Jakarta Sans', 'sans-serif']
-                    }
-                }
-            }
-        }
-    </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Frisco Memorial Volleyball All-Time Record Board</title>
+  <style>
+    :root {
+      --bg: #0d0f12;
+      --card-bg: #161a22;
+      --card-border: #2a313d;
+      --gold: #d4af37;
+      --gold-light: #f3e5ab;
+      --text-main: #f0f3f6;
+      --text-muted: #8b949e;
+      --accent: #238636;
+      --pill-bg: #21262d;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+    body { background-color: var(--bg); color: var(--text-main); padding: 16px; line-height: 1.4; }
+    .header { text-align: center; padding: 16px 8px 16px; border-bottom: 2px solid var(--card-border); max-width: 900px; margin: 0 auto; }
+    .badge { display: inline-block; background: var(--gold); color: #000; font-weight: 800; font-size: 11px; padding: 4px 10px; border-radius: 999px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
+    h1 { font-size: 24px; font-weight: 800; color: var(--text-main); text-transform: uppercase; letter-spacing: 0.5px; }
+    .subtitle { color: var(--gold); font-size: 14px; font-weight: 600; margin-top: 4px; }
+    .last-updated { font-size: 11px; color: var(--text-muted); margin-top: 6px; letter-spacing: 0.5px; }
+    .team-banner { background: linear-gradient(90deg, #1f1b0e, #2b2512); border: 1px solid var(--gold); border-radius: 8px; padding: 12px 16px; margin: 16px auto; max-width: 900px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+    .team-banner span { font-weight: 700; font-size: 14px; color: var(--gold-light); }
+    .nav-tabs { display: flex; gap: 6px; overflow-x: auto; padding: 12px 0; max-width: 900px; margin: 0 auto; -webkit-overflow-scrolling: touch; }
+    .tab-btn { background: var(--card-bg); border: 1px solid var(--card-border); color: var(--text-muted); padding: 8px 14px; border-radius: 6px; font-size: 13px; font-weight: 600; cursor: pointer; white-space: nowrap; transition: all 0.2s; flex-shrink: 0; }
+    .tab-btn.active { background: var(--gold); color: #000; border-color: var(--gold); }
+    .container { max-width: 900px; margin: 0 auto; }
+    .view-panel { display: none; }
+    .view-panel.active { display: block; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 14px; margin-top: 14px; }
+    .card { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 8px; padding: 16px; }
+    .card-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--card-border); padding-bottom: 8px; margin-bottom: 12px; }
+    .card-title { font-size: 15px; font-weight: 700; color: var(--gold); text-transform: uppercase; letter-spacing: 0.5px; }
+    .leader-row { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+    .leader-row:last-child { border-bottom: none; }
+    .rank { font-weight: 800; color: var(--gold); width: 22px; font-size: 14px; }
+    .player-name { font-weight: 600; font-size: 14px; color: var(--text-main); }
+    .player-sub { font-size: 11px; color: var(--text-muted); }
+    .stat-val { font-weight: 700; font-size: 15px; color: #fff; text-align: right; }
+    .active-badge { background: #238636; color: #fff; font-size: 10px; font-weight: 700; padding: 2px 6px; border-radius: 4px; margin-left: 6px; }
+    .progress-bar-bg { background: #21262d; border-radius: 999px; height: 8px; width: 100%; margin: 8px 0 4px; overflow: hidden; }
+    .progress-bar-fill { background: linear-gradient(90deg, #d4af37, #ffd700); height: 100%; border-radius: 999px; }
+    .target-text { font-size: 11px; color: var(--text-muted); display: flex; justify-content: space-between; }
+    .grade-selector { display: flex; gap: 6px; margin: 12px 0; }
+    .grade-btn { background: var(--pill-bg); border: 1px solid var(--card-border); color: var(--text-muted); padding: 6px 12px; border-radius: 4px; font-size: 12px; cursor: pointer; font-weight: 600; }
+    .grade-btn.active { background: var(--card-border); color: var(--gold); border-color: var(--gold); }
+    footer { text-align: center; color: var(--text-muted); font-size: 12px; margin-top: 32px; padding: 16px; border-top: 1px solid var(--card-border); }
+  </style>
 </head>
-<body class="bg-obsidian text-cream min-h-screen font-sans antialiased selection:bg-gold selection:text-obsidian">
+<body>
 
-    <!-- Header / Hero -->
-    <header class="border-b border-obsidian-border bg-obsidian-card/80 backdrop-blur sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 py-6 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4">
-            <div>
-                <div class="flex items-center gap-3">
-                    <span class="px-3 py-1 bg-gold/10 text-gold border border-gold/30 rounded-full text-xs font-semibold uppercase tracking-widest">Historical Record Board</span>
-                    <span class="text-xs text-gray-400">Program History: 2018–Present</span>
-                </div>
-                <h1 class="font-heading text-3xl sm:text-4xl font-bold text-white tracking-wider mt-1">FRISCO MEMORIAL WARRIORS</h1>
-                <p class="text-sm text-gray-400">Unofficial All-Time Program Statistics & Record Holders (34–6 Overall Record)</p>
-            </div>
-        </div>
-    </header>
+  <div class="header">
+    <div class="badge">Unofficial Program Records</div>
+    <h1>Frisco Memorial High School</h1>
+    <div class="subtitle">Warriors Volleyball All-Time Record Board (2018–Present)</div>
+    <div class="last-updated">Stats audited &amp; synchronized post-Independence Match (34–6 Overall)</div>
+  </div>
 
-    <!-- Main Container -->
-    <main class="max-w-7xl mx-auto px-4 py-8 sm:px-6 lg:px-8">
+  <div class="team-banner">
+    <div>
+      <span>👑 2026–27 Varsity: 34–6 Overall</span>
+      <div style="font-size: 12px; color: #c9d1d9; margin-top: 2px;">Outright All-Time School Wins Record!</div>
+    </div>
+    <div class="active-badge" style="padding: 6px 12px; font-size: 12px;">ACTIVE SQUAD</div>
+  </div>
 
-        <!-- Navigation Tabs -->
-        <div class="flex flex-wrap gap-2 border-b border-obsidian-border pb-4 mb-8">
-            <button onclick="switchTab('career')" id="btn-career" class="tab-btn px-5 py-2.5 rounded-xl font-heading text-sm tracking-wider transition-all bg-gold text-obsidian font-bold shadow-lg shadow-gold/20">Career Records</button>
-            <button onclick="switchTab('season')" id="btn-season" class="tab-btn px-5 py-2.5 rounded-xl font-heading text-sm tracking-wider transition-all bg-obsidian-card text-gray-400 hover:text-white border border-obsidian-border">Single-Season</button>
-            <button onclick="switchTab('match')" id="btn-match" class="tab-btn px-5 py-2.5 rounded-xl font-heading text-sm tracking-wider transition-all bg-obsidian-card text-gray-400 hover:text-white border border-obsidian-border">Single-Match</button>
-            <button onclick="switchTab('grades')" id="btn-grades" class="tab-btn px-5 py-2.5 rounded-xl font-heading text-sm tracking-wider transition-all bg-obsidian-card text-gray-400 hover:text-white border border-obsidian-border">Class Grades</button>
-        </div>
+  <!-- NAVIGATION TABS -->
+  <div class="nav-tabs">
+    <button class="tab-btn active" onclick="switchTab('career')">1. Career</button>
+    <button class="tab-btn" onclick="switchTab('season')">2. Season</button>
+    <button class="tab-btn" onclick="switchTab('match')">3. Match Highs</button>
+    <button class="tab-btn" onclick="switchTab('class')">4. Class Grades</button>
+    <button class="tab-btn" onclick="switchTab('chase')">5. Active Chase</button>
+  </div>
 
-        <!-- Tab Content: Career -->
-        <div id="content-career" class="tab-content grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <!-- Career Kills -->
-            <div class="bg-obsidian-card border border-obsidian-border rounded-2xl p-6 relative hover:border-gold/50 transition-all">
-                <div class="flex justify-between items-start mb-4">
-                    <h3 class="font-heading text-lg font-bold text-white">Career Kills</h3>
-                    <span class="text-xs bg-gold/10 text-gold px-2.5 py-1 rounded-md font-semibold">All-Time</span>
-                </div>
-                <div class="space-y-4">
-                    <div class="flex justify-between items-center border-b border-obsidian-border pb-3">
-                        <div>
-                            <span class="text-xs text-gold font-bold">#1</span>
-                            <span class="font-semibold text-white ml-2">Ava Steffe</span>
-                        </div>
-                        <span class="font-heading text-lg font-bold text-gold">1,590</span>
-                    </div>
-                    <div class="flex justify-between items-center border-b border-obsidian-border pb-3 bg-gold/5 px-2 rounded">
-                        <div>
-                            <span class="text-xs text-gold font-bold">#2</span>
-                            <span class="font-semibold text-white ml-2">Samantha Everidge (Sr.)</span>
-                        </div>
-                        <span class="font-heading text-lg font-bold text-gold">1,289</span>
-                    </div>
-                    <div class="flex justify-between items-center pb-1">
-                        <div>
-                            <span class="text-xs text-gold font-bold">#3</span>
-                            <span class="font-semibold text-white ml-2">Britton Finley</span>
-                        </div>
-                        <span class="font-heading text-lg font-bold text-gold">1,106</span>
-                    </div>
-                </div>
-            </div>
+  <div class="container">
 
-            <!-- Career Assists -->
-            <div class="bg-obsidian-card border border-obsidian-border rounded-2xl p-6 relative hover:border-gold/50 transition-all">
-                <div class="flex justify-between items-start mb-4">
-                    <h3 class="font-heading text-lg font-bold text-white">Career Assists</h3>
-                    <span class="text-xs bg-gold/10 text-gold px-2.5 py-1 rounded-md font-semibold">All-Time</span>
-                </div>
-                <div class="space-y-4">
-                    <div class="flex justify-between items-center border-b border-obsidian-border pb-3 bg-gold/5 px-2 rounded">
-                        <div>
-                            <span class="text-xs text-gold font-bold">#1</span>
-                            <span class="font-semibold text-white ml-2">Addison Childers (Sr.)</span>
-                        </div>
-                        <span class="font-heading text-lg font-bold text-gold">2,214</span>
-                    </div>
-                    <div class="flex justify-between items-center border-b border-obsidian-border pb-3">
-                        <div>
-                            <span class="text-xs text-gold font-bold">#2</span>
-                            <span class="font-semibold text-white ml-2">Historical Leader</span>
-                        </div>
-                        <span class="font-heading text-lg font-bold text-gold">1,840</span>
-                    </div>
-                    <div class="flex justify-between items-center pb-1">
-                        <div>
-                            <span class="text-xs text-gold font-bold">#3</span>
-                            <span class="font-semibold text-white ml-2">Program Alum</span>
-                        </div>
-                        <span class="font-heading text-lg font-bold text-gold">1,520</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Career Digs -->
-            <div class="bg-obsidian-card border border-obsidian-border rounded-2xl p-6 relative hover:border-gold/50 transition-all">
-                <div class="flex justify-between items-start mb-4">
-                    <h3 class="font-heading text-lg font-bold text-white">Career Digs</h3>
-                    <span class="text-xs bg-gold/10 text-gold px-2.5 py-1 rounded-md font-semibold">All-Time</span>
-                </div>
-                <div class="space-y-4">
-                    <div class="flex justify-between items-center border-b border-obsidian-border pb-3">
-                        <div>
-                            <span class="text-xs text-gold font-bold">#1</span>
-                            <span class="font-semibold text-white ml-2">Historical Leader</span>
-                        </div>
-                        <span class="font-heading text-lg font-bold text-gold">1,450</span>
-                    </div>
-                    <div class="flex justify-between items-center border-b border-obsidian-border pb-3 bg-gold/5 px-2 rounded">
-                        <div>
-                            <span class="text-xs text-gold font-bold">#2</span>
-                            <span class="font-semibold text-white ml-2">Giselle Toles (Sr.)</span>
-                        </div>
-                        <span class="font-heading text-lg font-bold text-gold">1,140+</span>
-                    </div>
-                    <div class="flex justify-between items-center pb-1 bg-gold/5 px-2 rounded">
-                        <div>
-                            <span class="text-xs text-gold font-bold">#3</span>
-                            <span class="font-semibold text-white ml-2">Samantha Everidge (Sr.)</span>
-                        </div>
-                        <span class="font-heading text-lg font-bold text-gold">1,003</span>
-                    </div>
-                </div>
-            </div>
+    <!-- VIEW 1: CAREER RECORDS -->
+    <div id="view-career" class="view-panel active">
+      <div class="grid">
+        <div class="card">
+          <div class="card-header"><div class="card-title">Career Kills</div></div>
+          <div class="leader-row"><span class="rank">1</span><div><div class="player-name">Ava Steffe</div><div class="player-sub">2021–2025</div></div><div class="stat-val">1,590 👑</div></div>
+          <div class="leader-row"><span class="rank">2</span><div><div class="player-name">Samantha Everidge <span class="active-badge">Active</span></div><div class="player-sub">2024–2027 (Excl. LPS)</div></div><div class="stat-val">1,289</div></div>
+          <div class="leader-row"><span class="rank">3</span><div><div class="player-name">Britton Finley</div><div class="player-sub">2021–2024</div></div><div class="stat-val">1,106</div></div>
         </div>
 
-        <!-- Tab Content: Single Season -->
-        <div id="content-season" class="tab-content hidden grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div class="bg-obsidian-card border border-obsidian-border rounded-2xl p-6">
-                <h3 class="font-heading text-lg font-bold text-white mb-4">Single-Season Kills</h3>
-                <div class="space-y-3">
-                    <div class="flex justify-between items-center border-b border-obsidian-border pb-2 bg-gold/5 px-2 rounded">
-                        <span class="text-white font-medium">1. Samantha Everidge (2026)</span>
-                        <span class="text-gold font-bold">627</span>
-                    </div>
-                    <div class="flex justify-between items-center border-b border-obsidian-border pb-2">
-                        <span class="text-white font-medium">2. Ava Steffe</span>
-                        <span class="text-gold font-bold">542</span>
-                    </div>
-                    <div class="flex justify-between items-center pb-2">
-                        <span class="text-white font-medium">3. Britton Finley</span>
-                        <span class="text-gold font-bold">488</span>
-                    </div>
-                </div>
-            </div>
-            <div class="bg-obsidian-card border border-obsidian-border rounded-2xl p-6">
-                <h3 class="font-heading text-lg font-bold text-white mb-4">Single-Season Aces</h3>
-                <div class="space-y-3">
-                    <div class="flex justify-between items-center border-b border-obsidian-border pb-2 bg-gold/5 px-2 rounded">
-                        <span class="text-white font-medium">1. Ava Funderburk (Junior)</span>
-                        <span class="text-gold font-bold">52</span>
-                    </div>
-                    <div class="flex justify-between items-center border-b border-obsidian-border pb-2">
-                        <span class="text-white font-medium">2. Program Leader</span>
-                        <span class="text-gold font-bold">48</span>
-                    </div>
-                    <div class="flex justify-between items-center pb-2">
-                        <span class="text-white font-medium">3. Program Leader</span>
-                        <span class="text-gold font-bold">44</span>
-                    </div>
-                </div>
-            </div>
-            <div class="bg-obsidian-card border border-obsidian-border rounded-2xl p-6">
-                <h3 class="font-heading text-lg font-bold text-white mb-4">Single-Season Assists</h3>
-                <div class="space-y-3">
-                    <div class="flex justify-between items-center border-b border-obsidian-border pb-2 bg-gold/5 px-2 rounded">
-                        <span class="text-white font-medium">1. Addison Childers (Senior)</span>
-                        <span class="text-gold font-bold">591</span>
-                    </div>
-                    <div class="flex justify-between items-center border-b border-obsidian-border pb-2">
-                        <span class="text-white font-medium">2. Valentina Elsen (Junior)</span>
-                        <span class="text-gold font-bold">524</span>
-                    </div>
-                    <div class="flex justify-between items-center pb-2">
-                        <span class="text-white font-medium">3. Program Leader</span>
-                        <span class="text-gold font-bold">512</span>
-                    </div>
-                </div>
-            </div>
+        <div class="card">
+          <div class="card-header"><div class="card-title">Career Total Blocks</div></div>
+          <div class="leader-row"><span class="rank">1</span><div><div class="player-name">Faith Roulston-aliu</div><div class="player-sub">2022–2026</div></div><div class="stat-val">358 👑</div></div>
+          <div class="leader-row"><span class="rank">2</span><div><div class="player-name">K. Deffebaugh</div><div class="player-sub">2019–2022</div></div><div class="stat-val">280</div></div>
+          <div class="leader-row"><span class="rank">3</span><div><div class="player-name">Reagan Frazier</div><div class="player-sub">2022–2026</div></div><div class="stat-val">223</div></div>
         </div>
 
-        <!-- Tab Content: Single Match -->
-        <div id="content-match" class="tab-content hidden grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div class="bg-obsidian-card border border-obsidian-border rounded-2xl p-6">
-                <h3 class="font-heading text-lg font-bold text-white mb-4">Single-Match Digs</h3>
-                <div class="space-y-3">
-                    <div class="flex justify-between items-center border-b border-obsidian-border pb-2 bg-gold/5 px-2 rounded">
-                        <div>
-                            <span class="text-white font-medium">Giselle Toles</span>
-                            <span class="text-xs text-gray-400 block">vs. CHS</span>
-                        </div>
-                        <span class="text-gold font-bold text-xl">37</span>
-                    </div>
-                    <div class="flex justify-between items-center pb-2 bg-gold/5 px-2 rounded">
-                        <div>
-                            <span class="text-white font-medium">Giselle Toles</span>
-                            <span class="text-xs text-gray-400 block">vs. EHS</span>
-                        </div>
-                        <span class="text-gold font-bold text-xl">36</span>
-                    </div>
-                </div>
-            </div>
-            <div class="bg-obsidian-card border border-obsidian-border rounded-2xl p-6">
-                <h3 class="font-heading text-lg font-bold text-white mb-4">Single-Match Blocks</h3>
-                <div class="space-y-3">
-                    <div class="flex justify-between items-center pb-2 bg-gold/5 px-2 rounded">
-                        <div>
-                            <span class="text-white font-medium">Aubrey Axtell</span>
-                            <span class="text-xs text-gray-400 block">vs. Ursuline</span>
-                        </div>
-                        <span class="text-gold font-bold text-xl">17</span>
-                    </div>
-                </div>
-            </div>
+        <div class="card">
+          <div class="card-header"><div class="card-title">Career Digs</div></div>
+          <div class="leader-row"><span class="rank">1</span><div><div class="player-name">Jules Hernandez</div><div class="player-sub">2022–2026</div></div><div class="stat-val">2,390 👑</div></div>
+          <div class="leader-row"><span class="rank">2</span><div><div class="player-name">Kaitlyn Noel</div><div class="player-sub">2018–2022</div></div><div class="stat-val">1,237</div></div>
+          <div class="leader-row"><span class="rank">3</span><div><div class="player-name">Samantha Everidge <span class="active-badge">Active</span></div><div class="player-sub">2024–2027</div></div><div class="stat-val">973</div></div>
         </div>
 
-        <!-- Tab Content: Class Grades -->
-        <div id="content-grades" class="tab-content hidden grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div class="bg-obsidian-card border border-obsidian-border rounded-2xl p-6">
-                <h3 class="font-heading text-lg font-bold text-gold mb-3">Freshman</h3>
-                <p class="text-sm text-gray-300">Aubrey Axtell set underclassman blocking standards and recorded 163 kills.</p>
-            </div>
-            <div class="bg-obsidian-card border border-obsidian-border rounded-2xl p-6">
-                <h3 class="font-heading text-lg font-bold text-gold mb-3">Sophomore</h3>
-                <p class="text-sm text-gray-300">Aubrey Axtell dominated with 335 kills and anchored the net alongside strong blocking.</p>
-            </div>
-            <div class="bg-obsidian-card border border-obsidian-border rounded-2xl p-6">
-                <h3 class="font-heading text-lg font-bold text-gold mb-3">Junior</h3>
-                <p class="text-sm text-gray-300">Ava Funderburk set the #1 Junior Season Ace record with 52 aces; Valentina Elsen tallied 524 assists.</p>
-            </div>
-            <div class="bg-obsidian-card border border-obsidian-border rounded-2xl p-6">
-                <h3 class="font-heading text-lg font-bold text-gold mb-3">Senior</h3>
-                <p class="text-sm text-gray-300">Samantha Everidge (627 kills, 1K+ digs), Addison Childers (2,214+ assists), and Giselle Toles anchor the 34–6 record squad.</p>
-            </div>
+        <div class="card">
+          <div class="card-header"><div class="card-title">Career Assists</div></div>
+          <div class="leader-row"><span class="rank">1</span><div><div class="player-name">Addison Childers <span class="active-badge">Active</span></div><div class="player-sub">2023–2027 (4-Yr Total)</div></div><div class="stat-val">2,214 👑</div></div>
+          <div class="leader-row"><span class="rank">2</span><div><div class="player-name">Kiana Babaei</div><div class="player-sub">2021–2025</div></div><div class="stat-val">1,622</div></div>
+          <div class="leader-row"><span class="rank">3</span><div><div class="player-name">L. Reed (Elizabeth)</div><div class="player-sub">2018–2021</div></div><div class="stat-val">1,130</div></div>
         </div>
 
-    </main>
+        <div class="card">
+          <div class="card-header"><div class="card-title">Career Service Aces</div></div>
+          <div class="leader-row"><span class="rank">1</span><div><div class="player-name">Jules Hernandez</div><div class="player-sub">2022–2026</div></div><div class="stat-val">204 👑</div></div>
+          <div class="leader-row"><span class="rank">2</span><div><div class="player-name">Addison Childers <span class="active-badge">Active</span></div><div class="player-sub">2023–2027</div></div><div class="stat-val">135</div></div>
+          <div class="leader-row"><span class="rank">3</span><div><div class="player-name">Kiana Babaei</div><div class="player-sub">2021–2025</div></div><div class="stat-val">103</div></div>
+        </div>
+      </div>
+    </div>
 
-    <!-- Footer -->
-    <footer class="mt-20 border-t border-obsidian-border py-8 text-center text-xs text-gray-500">
-        Frisco Memorial Volleyball All-Time Record Board • Built for Warrior Nation
-    </footer>
+    <!-- VIEW 2: SINGLE-SEASON RECORDS -->
+    <div id="view-season" class="view-panel">
+      <div class="grid">
+        <div class="card">
+          <div class="card-header"><div class="card-title">Season Kills</div></div>
+          <div class="leader-row"><span class="rank">1</span><div><div class="player-name">Samantha Everidge <span class="active-badge">Active</span></div><div class="player-sub">2026–27 (Senior)</div></div><div class="stat-val">627 👑</div></div>
+          <div class="leader-row"><span class="rank">2</span><div><div class="player-name">Ava Steffe</div><div class="player-sub">2023–24 (Junior)</div></div><div class="stat-val">540</div></div>
+          <div class="leader-row"><span class="rank">3</span><div><div class="player-name">Britton Finley</div><div class="player-sub">2022–23 (Sophomore)</div></div><div class="stat-val">538</div></div>
+        </div>
 
-    <script>
-        function switchTab(tabId) {
-            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
-            document.querySelectorAll('.tab-btn').forEach(el => {
-                el.classList.remove('bg-gold', 'text-obsidian', 'font-bold', 'shadow-lg', 'shadow-gold/20');
-                el.classList.add('bg-obsidian-card', 'text-gray-400', 'border', 'border-obsidian-border');
-            });
-            
-            document.getElementById('content-' + tabId).classList.remove('hidden');
-            const activeBtn = document.getElementById('btn-' + tabId);
-            activeBtn.classList.remove('bg-obsidian-card', 'text-gray-400', 'border', 'border-obsidian-border');
-            activeBtn.classList.add('bg-gold', 'text-obsidian', 'font-bold', 'shadow-lg', 'shadow-gold/20');
-        }
-    </script>
+        <div class="card">
+          <div class="card-header"><div class="card-title">Season Aces</div></div>
+          <div class="leader-row"><span class="rank">1</span><div><div class="player-name">Jules Hernandez</div><div class="player-sub">2025–26 (Senior)</div></div><div class="stat-val">65 👑</div></div>
+          <div class="leader-row"><span class="rank">2</span><div><div class="player-name">Ava Funderburk</div><div class="player-sub">2025–26 (Junior)</div></div><div class="stat-val">52</div></div>
+          <div class="leader-row"><span class="rank">3</span><div><div class="player-name">Ava Funderburk <span class="active-badge">Active</span></div><div class="player-sub">2026–27 (Senior)</div></div><div class="stat-val">49</div></div>
+        </div>
+
+        <div class="card">
+          <div class="card-header"><div class="card-title">Season Digs</div></div>
+          <div class="leader-row"><span class="rank">1</span><div><div class="player-name">Jules Hernandez</div><div class="player-sub">2024–25 (Junior)</div></div><div class="stat-val">644 👑</div></div>
+          <div class="leader-row"><span class="rank">2</span><div><div class="player-name">Jules Hernandez</div><div class="player-sub">2023–24 (Sophomore)</div></div><div class="stat-val">640</div></div>
+          <div class="leader-row"><span class="rank">3</span><div><div class="player-name">Jules Hernandez</div><div class="player-sub">2025–26 (Senior)</div></div><div class="stat-val">600</div></div>
+        </div>
+
+        <div class="card">
+          <div class="card-header"><div class="card-title">Season Blocks</div></div>
+          <div class="leader-row"><span class="rank">1</span><div><div class="player-name">Faith Roulston-aliu</div><div class="player-sub">2024–25 (Junior)</div></div><div class="stat-val">147 👑</div></div>
+          <div class="leader-row"><span class="rank">2</span><div><div class="player-name">Faith Roulston-aliu</div><div class="player-sub">2025–26 (Senior)</div></div><div class="stat-val">111</div></div>
+          <div class="leader-row"><span class="rank">3</span><div><div class="player-name">Aubrey Axtell <span class="active-badge">Active</span></div><div class="player-sub">2026–27 (Sophomore)</div></div><div class="stat-val">89</div></div>
+        </div>
+
+        <div class="card">
+          <div class="card-header"><div class="card-title">Season Assists</div></div>
+          <div class="leader-row"><span class="rank">1</span><div><div class="player-name">L. Reed</div><div class="player-sub">2020–21 (Senior)</div></div><div class="stat-val">649 👑</div></div>
+          <div class="leader-row"><span class="rank">2</span><div><div class="player-name">Addison Childers</div><div class="player-sub">2025–26 (Junior)</div></div><div class="stat-val">638</div></div>
+          <div class="leader-row"><span class="rank">3</span><div><div class="player-name">Sophia (S. Arena)</div><div class="player-sub">2024–25 (Senior)</div></div><div class="stat-val">627</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- VIEW 3: SINGLE-MATCH HIGHS -->
+    <div id="view-match" class="view-panel">
+      <div class="grid">
+        <div class="card">
+          <div class="card-header"><div class="card-title">Match Kills</div></div>
+          <div class="leader-row"><span class="rank">1</span><div><div class="player-name">Britton Finley</div><div class="player-sub">vs Centennial (5 sets, 2022)</div></div><div class="stat-val">40</div></div>
+          <div class="leader-row"><span class="rank">2</span><div><div class="player-name">Samantha Everidge</div><div class="player-sub">vs Celina (3 sets, 2026)</div></div><div class="stat-val">30 👑</div></div>
+          <div class="leader-row"><span class="rank">3</span><div><div class="player-name">Samantha Everidge</div><div class="player-sub">vs Frisco High (5 sets, 2026)</div></div><div class="stat-val">29</div></div>
+        </div>
+
+        <div class="card">
+          <div class="card-header"><div class="card-title">Match Digs</div></div>
+          <div class="leader-row"><span class="rank">1</span><div><div class="player-name">Giselle Toles <span class="active-badge">Active</span></div><div class="player-sub">vs CHS (5 sets, 2026)</div></div><div class="stat-val">37 👑</div></div>
+          <div class="leader-row"><span class="rank">2</span><div><div class="player-name">Giselle Toles <span class="active-badge">Active</span></div><div class="player-sub">vs EHS (5 sets, 2026)</div></div><div class="stat-val">36</div></div>
+          <div class="leader-row"><span class="rank">3</span><div><div class="player-name">Jules Hernandez</div><div class="player-sub">vs Frisco High (5 sets, 2024)</div></div><div class="stat-val">35</div></div>
+        </div>
+
+        <div class="card">
+          <div class="card-header"><div class="card-title">Match Assists</div></div>
+          <div class="leader-row"><span class="rank">1</span><div><div class="player-name">L. Reed</div><div class="player-sub">vs LTHS (5 sets, 2020)</div></div><div class="stat-val">54 👑</div></div>
+          <div class="leader-row"><span class="rank">2</span><div><div class="player-name">L. Reed</div><div class="player-sub">vs LSHS (5 sets, 2020)</div></div><div class="stat-val">46</div></div>
+          <div class="leader-row"><span class="rank">3</span><div><div class="player-name">L. Reed</div><div class="player-sub">vs LSHS (4 sets, 2020)</div></div><div class="stat-val">44</div></div>
+        </div>
+
+        <div class="card">
+          <div class="card-header"><div class="card-title">Match Blocks</div></div>
+          <div class="leader-row"><span class="rank">1</span><div><div class="player-name">Aubrey Axtell</div><div class="player-sub">vs Ursuline Academy (4 sets, 2026)</div></div><div class="stat-val">17 👑</div></div>
+          <div class="leader-row"><span class="rank">2</span><div><div class="player-name">Reagan Frazier / Kailee Deffebaugh</div><div class="player-sub">vs Independence ('23) / vs LHS ('21)</div></div><div class="stat-val">11</div></div>
+          <div class="leader-row"><span class="rank">3</span><div><div class="player-name">Samantha Everidge</div><div class="player-sub">vs Liberty (4 sets, 2026)</div></div><div class="stat-val">8</div></div>
+        </div>
+        
+        <div class="card">
+          <div class="card-header"><div class="card-title">Match Aces</div></div>
+          <div class="leader-row"><span class="rank">1</span><div><div class="player-name">Jules Hernandez</div><div class="player-sub">vs NDHS (2 sets, 2025)</div></div><div class="stat-val">10 👑</div></div>
+          <div class="leader-row"><span class="rank">2</span><div><div class="player-name">L. Reed</div><div class="player-sub">vs Red Oak (3 sets, 2020)</div></div><div class="stat-val">7</div></div>
+          <div class="leader-row"><span class="rank">3</span><div><div class="player-name">Ava Funderburk / Addison Childers</div><div class="player-sub">vs CHS (2025) / vs HHS (2026)</div></div><div class="stat-val">6</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- VIEW 4: CLASS RECORDS -->
+    <div id="view-class" class="view-panel">
+      <div class="grade-selector">
+        <button class="grade-btn active" onclick="switchGrade('sr')">Seniors</button>
+        <button class="grade-btn" onclick="switchGrade('jr')">Juniors</button>
+        <button class="grade-btn" onclick="switchGrade('so')">Sophomores</button>
+        <button class="grade-btn" onclick="switchGrade('fr')">Freshmen</button>
+      </div>
+
+      <!-- SENIORS -->
+      <div id="grade-sr" class="grade-content">
+        <div class="grid">
+          <div class="card">
+            <div class="card-header"><div class="card-title">Senior Kills</div></div>
+            <div class="leader-row"><span class="rank">1</span><div><div class="player-name">Samantha Everidge</div><div class="player-sub">Class of 2027</div></div><div class="stat-val">627 👑</div></div>
+            <div class="leader-row"><span class="rank">2</span><div><div class="player-name">Faith Roulston-aliu</div><div class="player-sub">Class of 2026</div></div><div class="stat-val">492</div></div>
+            <div class="leader-row"><span class="rank">3</span><div><div class="player-name">Ava Steffe</div><div class="player-sub">Class of 2025</div></div><div class="stat-val">481</div></div>
+          </div>
+          <div class="card">
+            <div class="card-header"><div class="card-title">Senior Assists</div></div>
+            <div class="leader-row"><span class="rank">1</span><div><div class="player-name">Addison Childers</div><div class="player-sub">Class of 2027</div></div><div class="stat-val">591 👑</div></div>
+            <div class="leader-row"><span class="rank">2</span><div><div class="player-name">L. Reed</div><div class="player-sub">Class of 2021</div></div><div class="stat-val">649</div></div>
+            <div class="leader-row"><span class="rank">3</span><div><div class="player-name">Sophia Arena</div><div class="player-sub">Class of 2025</div></div><div class="stat-val">627</div></div>
+          </div>
+          <div class="card">
+            <div class="card-header"><div class="card-title">Senior Digs</div></div>
+            <div class="leader-row"><span class="rank">1</span><div><div class="player-name">Jules Hernandez</div><div class="player-sub">Class of 2026</div></div><div class="stat-val">600 👑</div></div>
+            <div class="leader-row"><span class="rank">2</span><div><div class="player-name">Ava Funderburk</div><div class="player-sub">Class of 2027</div></div><div class="stat-val">532</div></div>
+            <div class="leader-row"><span class="rank">3</span><div><div class="player-name">Kaitlyn Noel</div><div class="player-sub">Class of 2022</div></div><div class="stat-val">480</div></div>
+          </div>
+          <div class="card">
+            <div class="card-header"><div class="card-title">Senior Blocks</div></div>
+            <div class="leader-row"><span class="rank">1</span><div><div class="player-name">Faith Roulston-aliu</div><div class="player-sub">Class of 2026</div></div><div class="stat-val">111 👑</div></div>
+            <div class="leader-row"><span class="rank">2</span><div><div class="player-name">K. Deffebaugh</div><div class="player-sub">Class of 2022</div></div><div class="stat-val">106</div></div>
+            <div class="leader-row"><span class="rank">3</span><div><div class="player-name">Samantha Everidge</div><div class="player-sub">Class of 2027</div></div><div class="stat-val">68</div></div>
+          </div>
+          <div class="card">
+            <div class="card-header"><div class="card-title">Senior Aces</div></div>
+            <div class="leader-row"><span class="rank">1</span><div><div class="player-name">Jules Hernandez</div><div class="player-sub">Class of 2026</div></div><div class="stat-val">65 👑</div></div>
+            <div class="leader-row"><span class="rank">2</span><div><div class="player-name">Ava Funderburk</div><div class="player-sub">Class of 2027</div></div><div class="stat-val">49</div></div>
+            <div class="leader-row"><span class="rank">3</span><div><div class="player-name">Addison Childers</div><div class="player-sub">Class of 2027</div></div><div class="stat-val">48</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- JUNIORS -->
+      <div id="grade-jr" class="grade-content" style="display:none;">
+        <div class="grid">
+          <div class="card">
+            <div class="card-header"><div class="card-title">Junior Kills</div></div>
+            <div class="leader-row"><span class="rank">1</span><div><div class="player-name">Ava Steffe</div><div class="player-sub">Class of 2025</div></div><div class="stat-val">540 👑</div></div>
+            <div class="leader-row"><span class="rank">2</span><div><div class="player-name">Samantha Everidge</div><div class="player-sub">Class of 2027</div></div><div class="stat-val">452</div></div>
+            <div class="leader-row"><span class="rank">3</span><div><div class="player-name">Britton Finley</div><div class="player-sub">Class of 2024</div></div><div class="stat-val">316</div></div>
+          </div>
+          <div class="card">
+            <div class="card-header"><div class="card-title">Junior Assists</div></div>
+            <div class="leader-row"><span class="rank">1</span><div><div class="player-name">Addison Childers</div><div class="player-sub">Class of 2027</div></div><div class="stat-val">638 👑</div></div>
+            <div class="leader-row"><span class="rank">2</span><div><div class="player-name">Kiana Babaei</div><div class="player-sub">Class of 2025</div></div><div class="stat-val">541</div></div>
+            <div class="leader-row"><span class="rank">3</span><div><div class="player-name">Valentina Elsen</div><div class="player-sub">Class of 2027</div></div><div class="stat-val">524</div></div>
+          </div>
+          <div class="card">
+            <div class="card-header"><div class="card-title">Junior Digs</div></div>
+            <div class="leader-row"><span class="rank">1</span><div><div class="player-name">Jules Hernandez</div><div class="player-sub">Class of 2026</div></div><div class="stat-val">644 👑</div></div>
+            <div class="leader-row"><span class="rank">2</span><div><div class="player-name">Samantha Everidge</div><div class="player-sub">Class of 2027</div></div><div class="stat-val">488</div></div>
+            <div class="leader-row"><span class="rank">3</span><div><div class="player-name">L. Reed</div><div class="player-sub">Class of 2021</div></div><div class="stat-val">423</div></div>
+          </div>
+          <div class="card">
+            <div class="card-header"><div class="card-title">Junior Blocks</div></div>
+            <div class="leader-row"><span class="rank">1</span><div><div class="player-name">Faith Roulston-aliu</div><div class="player-sub">Class of 2026</div></div><div class="stat-val">147 👑</div></div>
+            <div class="leader-row"><span class="rank">2</span><div><div class="player-name">Reagan Frazier</div><div class="player-sub">Class of 2026</div></div><div class="stat-val">88</div></div>
+            <div class="leader-row"><span class="rank">3</span><div><div class="player-name">Ava Steffe</div><div class="player-sub">Class of 2025</div></div><div class="stat-val">62</div></div>
+          </div>
+          <div class="card">
+            <div class="card-header"><div class="card-title">Junior Aces</div></div>
+            <div class="leader-row"><span class="rank">1</span><div><div class="player-name">Ava Funderburk</div><div class="player-sub">Class of 2027</div></div><div class="stat-val">52 👑</div></div>
+            <div class="leader-row"><span class="rank">2</span><div><div class="player-name">Jules Hernandez</div><div class="player-sub">Class of 2026</div></div><div class="stat-val">49</div></div>
+            <div class="leader-row"><span class="rank">3</span><div><div class="player-name">Valentina Elsen</div><div class="player-sub">Class of 2027</div></div><div class="stat-val">40</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SOPHOMORES -->
+      <div id="grade-so" class="grade-content" style="display:none;">
+        <div class="grid">
+          <div class="card">
+            <div class="card-header"><div class="card-title">Sophomore Kills</div></div>
+            <div class="leader-row"><span class="rank">1</span><div><div class="player-name">Britton Finley</div><div class="player-sub">Class of 2024</div></div><div class="stat-val">538 👑</div></div>
+            <div class="leader-row"><span class="rank">2</span><div><div class="player-name">Ava Steffe</div><div class="player-sub">Class of 2025</div></div><div class="stat-val">440</div></div>
+            <div class="leader-row"><span class="rank">3</span><div><div class="player-name">Aubrey Axtell</div><div class="player-sub">Class of 2028</div></div><div class="stat-val">335</div></div>
+          </div>
+          <div class="card">
+            <div class="card-header"><div class="card-title">Sophomore Assists</div></div>
+            <div class="leader-row"><span class="rank">1</span><div><div class="player-name">Valentina Elsen</div><div class="player-sub">Class of 2027</div></div><div class="stat-val">584 👑</div></div>
+            <div class="leader-row"><span class="rank">2</span><div><div class="player-name">Kiana Babaei</div><div class="player-sub">Class of 2025</div></div><div class="stat-val">578</div></div>
+            <div class="leader-row"><span class="rank">3</span><div><div class="player-name">Addison Childers</div><div class="player-sub">Class of 2027</div></div><div class="stat-val">535</div></div>
+          </div>
+          <div class="card">
+            <div class="card-header"><div class="card-title">Sophomore Digs</div></div>
+            <div class="leader-row"><span class="rank">1</span><div><div class="player-name">Jules Hernandez</div><div class="player-sub">Class of 2026</div></div><div class="stat-val">640 👑</div></div>
+            <div class="leader-row"><span class="rank">2</span><div><div class="player-name">Ava Funderburk</div><div class="player-sub">Class of 2027</div></div><div class="stat-val">398</div></div>
+            <div class="leader-row"><span class="rank">3</span><div><div class="player-name">Kiana Babaei</div><div class="player-sub">Class of 2025</div></div><div class="stat-val">310</div></div>
+          </div>
+          <div class="card">
+            <div class="card-header"><div class="card-title">Sophomore Blocks</div></div>
+            <div class="leader-row"><span class="rank">1</span><div><div class="player-name">R. Frazier / K. Deffebaugh</div></div><div class="stat-val">93 👑</div></div>
+            <div class="leader-row"><span class="rank">2</span><div><div class="player-name">Aubrey Axtell</div><div class="player-sub">Class of 2028</div></div><div class="stat-val">89</div></div>
+            <div class="leader-row"><span class="rank">3</span><div><div class="player-name">Faith Roulston-aliu</div><div class="player-sub">Class of 2026</div></div><div class="stat-val">65</div></div>
+          </div>
+          <div class="card">
+            <div class="card-header"><div class="card-title">Sophomore Aces</div></div>
+            <div class="leader-row"><span class="rank">1</span><div><div class="player-name">Jules Hernandez</div><div class="player-sub">Class of 2026</div></div><div class="stat-val">42 👑</div></div>
+            <div class="leader-row"><span class="rank">2</span><div><div class="player-name">Ava Funderburk</div><div class="player-sub">Class of 2027</div></div><div class="stat-val">35</div></div>
+            <div class="leader-row"><span class="rank">3</span><div><div class="player-name">Addison Childers</div><div class="player-sub">Class of 2027</div></div><div class="stat-val">30</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FRESHMEN -->
+      <div id="grade-fr" class="grade-content" style="display:none;">
+        <div class="grid">
+          <div class="card">
+            <div class="card-header"><div class="card-title">Freshman Kills</div></div>
+            <div class="leader-row"><span class="rank">1</span><div><div class="player-name">Britton Finley</div><div class="player-sub">Class of 2024</div></div><div class="stat-val">252 👑</div></div>
+            <div class="leader-row"><span class="rank">2</span><div><div class="player-name">Aubrey Axtell</div><div class="player-sub">Class of 2028</div></div><div class="stat-val">163</div></div>
+            <div class="leader-row"><span class="rank">3</span><div><div class="player-name">Ava Steffe</div><div class="player-sub">Class of 2025</div></div><div class="stat-val">129</div></div>
+          </div>
+          <div class="card">
+            <div class="card-header"><div class="card-title">Freshman Assists</div></div>
+            <div class="leader-row"><span class="rank">1</span><div><div class="player-name">Addison Childers</div><div class="player-sub">Class of 2027</div></div><div class="stat-val">450 👑</div></div>
+            <div class="leader-row"><span class="rank">2</span><div><div class="player-name">Kiana Babaei</div><div class="player-sub">Class of 2025</div></div><div class="stat-val">320</div></div>
+            <div class="leader-row"><span class="rank">3</span><div><div class="player-name">Valentina Elsen</div><div class="player-sub">Class of 2027</div></div><div class="stat-val">210</div></div>
+          </div>
+          <div class="card">
+            <div class="card-header"><div class="card-title">Freshman Digs</div></div>
+            <div class="leader-row"><span class="rank">1</span><div><div class="player-name">Jules Hernandez</div><div class="player-sub">Class of 2026</div></div><div class="stat-val">350 👑</div></div>
+            <div class="leader-row"><span class="rank">2</span><div><div class="player-name">Ava Funderburk</div><div class="player-sub">Class of 2027</div></div><div class="stat-val">290</div></div>
+            <div class="leader-row"><span class="rank">3</span><div><div class="player-name">Kiana Babaei</div><div class="player-sub">Class of 2025</div></div><div class="stat-val">215</div></div>
+          </div>
+          <div class="card">
+            <div class="card-header"><div class="card-title">Freshman Blocks</div></div>
+            <div class="leader-row"><span class="rank">1</span><div><div class="player-name">Aubrey Axtell</div><div class="player-sub">Class of 2028</div></div><div class="stat-val">94 👑</div></div>
+            <div class="leader-row"><span class="rank">2</span><div><div class="player-name">Ava Steffe</div><div class="player-sub">Class of 2025</div></div><div class="stat-val">68</div></div>
+            <div class="leader-row"><span class="rank">3</span><div><div class="player-name">Britton Finley</div><div class="player-sub">Class of 2024</div></div><div class="stat-val">38</div></div>
+          </div>
+          <div class="card">
+            <div class="card-header"><div class="card-title">Freshman Aces</div></div>
+            <div class="leader-row"><span class="rank">1</span><div><div class="player-name">Jules Hernandez</div><div class="player-sub">Class of 2026</div></div><div class="stat-val">34 👑</div></div>
+            <div class="leader-row"><span class="rank">2</span><div><div class="player-name">Ava Funderburk</div><div class="player-sub">Class of 2027</div></div><div class="stat-val">28</div></div>
+            <div class="leader-row"><span class="rank">3</span><div><div class="player-name">Addison Childers</div><div class="player-sub">Class of 2027</div></div><div class="stat-val">25</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- VIEW 5: ACTIVE ROSTER CHASE -->
+    <div id="view-chase" class="view-panel">
+      <div class="grid">
+        <div class="card">
+          <div class="player-name">#8 Addison Childers (Sr. | Setter)</div>
+          <div class="player-sub">Holds Career Assists (2,214); Chasing Season Aces</div>
+          <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 75%;"></div></div>
+          <div class="target-text"><span>Current: 48 Aces</span><span>Target: 65</span></div>
+        </div>
+
+        <div class="card">
+          <div class="player-name">#10 Samantha Everidge (Sr. | Outside Hitter)</div>
+          <div class="player-sub">NEW RECORD HOLDER: Single-Season Kills (627) &amp; 1K Career Kills Club (1,289)</div>
+          <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 97%;"></div></div>
+          <div class="target-text"><span>Current: 973 Digs</span><span>Target: 1,000 Career Digs Milestone</span></div>
+        </div>
+
+        <div class="card">
+          <div class="player-name">#9 Ava Funderburk (Sr. | Libero/DS)</div>
+          <div class="player-sub">Chasing #3 All-Time Career Aces &amp; Digs Milestones</div>
+          <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 99%;"></div></div>
+          <div class="target-text"><span>Current: 532 Digs (Season)</span><span>Target: 1,000+ Digs</span></div>
+        </div>
+
+        <div class="card">
+          <div class="player-name">#7 Giselle Toles (Sr. | DS/Libero)</div>
+          <div class="player-sub">NEW RECORD HOLDER: Single-Match Digs Leader (#1 with 37 &amp; #2 with 36)</div>
+          <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 95%;"></div></div>
+          <div class="target-text"><span>Current: 418 Digs (Season)</span><span>Record Holder!</span></div>
+        </div>
+        
+        <div class="card">
+          <div class="player-name">The Race for #3 Career Digs</div>
+          <div class="player-sub">Everidge vs. Funderburk for All-Time Top 3</div>
+          <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 100%;"></div></div>
+          <div class="target-text"><span>Everidge: 973 Digs</span><span>Funderburk: 931 Digs</span></div>
+        </div>
+
+        <div class="card">
+          <div class="player-name">#15 Aubrey Axtell (So. | Middle Blocker)</div>
+          <div class="player-sub">Chasing #1 All-Time Sophomore Blocks &amp; Kills</div>
+          <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 93%;"></div></div>
+          <div class="target-text"><span>Current: 89 Blocks / 335 Kills</span><span>Record Chaser!</span></div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <footer>Frisco Memorial High School Volleyball Records Archive · Source: MaxPreps Historical Box Scores</footer>
+
+  <script>
+    function switchTab(viewName) {
+      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll('.view-panel').forEach(panel => panel.classList.remove('active'));
+      event.currentTarget.classList.add('active');
+      document.getElementById('view-' + viewName).classList.add('active');
+    }
+    function switchGrade(grade) {
+      document.querySelectorAll('.grade-btn').forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll('.grade-content').forEach(c => c.style.display = 'none');
+      event.currentTarget.classList.add('active');
+      document.getElementById('grade-' + grade).style.display = 'block';
+    }
+  </script>
 </body>
 </html>
-
