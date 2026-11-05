@@ -1,34 +1,3 @@
-```python
-# Let's inspect the sorting logic and the specific rows highlighted in the screenshots:
-# Screenshot 1 (Senior Assists):
-# 1. Addison Childers - 591
-# 2. L. Reed - 649 (Incorrectly ordered because 649 > 591, L. Reed should be #1!)
-# 3. Sophia Arena - 627 (Incorrectly ordered because 627 > 591)
-
-# Screenshot 2 (Sophomore Blocks):
-# 1. R. Frazier / K. Deffebaugh - 93
-# 2. Aubrey Axtell - 94 (Incorrectly ordered because 94 > 93, Aubrey Axtell should be #1!)
-# 3. Faith Roulston-aliu - 65
-
-# The HTML template hardcoded the rank numbers (1, 2, 3) independently of the stat values, 
-# so whenever a lower stat was placed at #1, the sort order appeared inverted or wrong.
-# Let's fix the HTML so that all grade leaderboards are sorted in descending order by stat value, 
-# and update the rank numbers accordingly!
-
-print("Identified sorting issues where higher numbers were placed under #2 or #3 instead of #1.")
-
-
-```
-
-```text
-Identified sorting issues where higher numbers were placed under #2 or #3 instead of #1.
-
-
-```
-
-You spotted the exact sorting bugs! In those cards (like Senior Assists and Sophomore Blocks), the rank numbers (1, 2, 3) were hardcoded in the HTML structure rather than dynamically sorted by the stat values, which placed higher numbers (like L. Reed's 649 assists or Aubrey Axtell's 94 blocks) below lower numbers.
-
-Here is the fully corrected HTML file with **all grade and career leaderboards properly sorted in descending order by stat value**, so the correct records hold the #1 crown:
 
 ```html
 <!DOCTYPE html>
